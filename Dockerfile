@@ -91,5 +91,23 @@ RUN set -ex && \
     apk add --update fontconfig mkfontscale mkfontdir && \
     mkfontscale && mkfontdir && fc-cache
 
+# add chromnium
+RUN apk update && \
+	apk add chromium chromium-chromedriver
+
+#add phantomjs
+ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
+
+RUN curl -Lk -o $PHANTOMJS_ARCHIVE https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz \
+	&& tar -xf $PHANTOMJS_ARCHIVE -C /tmp/ \
+	&& cp -R /tmp/etc/fonts /etc/ \
+	&& cp -R /tmp/lib/* /lib/ \
+	&& cp -R /tmp/lib64 / \
+	&& cp -R /tmp/usr/lib/* /usr/lib/ \
+	&& cp -R /tmp/usr/lib/x86_64-linux-gnu /usr/ \
+	&& cp -R /tmp/usr/share/* /usr/share/ \
+	&& cp /tmp/usr/local/bin/phantomjs /usr/bin/ \
+	&& rm -fr $PHANTOMJS_ARCHIVE  /tmp/*
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
