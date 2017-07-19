@@ -100,7 +100,7 @@ ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
 RUN apk update && \
 	apk add curl
 
-RUN set -ex && curl -Lk -o $PHANTOMJS_ARCHIVE https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz \
+RUN set -ex && curl -Lk -o $PHANTOMJS_ARCHIVE https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 \
 	&& tar -xf $PHANTOMJS_ARCHIVE -C /tmp/ \
 	&& cp -R /tmp/etc/fonts /etc/ \
 	&& cp -R /tmp/lib/* /lib/ \
