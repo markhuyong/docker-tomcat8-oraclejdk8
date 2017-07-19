@@ -97,6 +97,8 @@ RUN apk update && \
 
 #add phantomjs
 ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
+RUN apk update && \
+	apk add curl
 
 RUN set -ex && curl -Lk -o $PHANTOMJS_ARCHIVE https://github.com/ariya/phantomjs/archive/2.1.1.tar.gz \
 	&& tar -xf $PHANTOMJS_ARCHIVE -C /tmp/ \
