@@ -1,4 +1,5 @@
-FROM anapsix/alpine-java:8_jdk
+#FROM anapsix/alpine-java:8_jdk
+FROM frolvlad/alpine-oraclejdk8
 MAINTAINER markhuyong <markhuyong@gmail.com>
 
 ENV CATALINA_HOME /usr/local/tomcat
