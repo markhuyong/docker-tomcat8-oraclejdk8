@@ -9,10 +9,6 @@ RUN set -ex && \
     apk add --update fontconfig mkfontscale mkfontdir && \
     mkfontscale && mkfontdir && fc-cache
 
-# add chromnium
-RUN apk update && \
-	apk add chromium chromium-chromedriver
-
 #add phantomjs
 ENV PHANTOMJS_ARCHIVE="phantomjs.tar.gz"
 RUN apk update && \
